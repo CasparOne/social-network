@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Имя:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Ваше имя" name="name" value="{{ old('name') }}" required autofocus>
@@ -27,7 +27,7 @@
 
 
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Фамилия:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" placeholder="Ваша фамилия" name="surname" value="{{ old('surname') }}" required>
@@ -43,7 +43,7 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Ваш email" name="email" value="{{ old('email') }}" required>
@@ -58,14 +58,13 @@
 
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Пароль:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Ваш пароль" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
-                                        {{ date() }}
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
@@ -73,31 +72,22 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Повторите пароль:') }}</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" placeholder="Повтирите пароль" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 
-
                         <div class="form-group row">
-                            <div class="col-md-4 text-right">
-                                Дата рождения:
-                            </div>
-                            <div class="col-md-2">
-                            <select class="form-control" name="b-day" id="">
-                                <option selected>1</option>
-                            </select>
-                            </div>
-                            <div class="col-md-2">
-                            <select class="form-control" name="b-month" id="">
-                                <option selected>Января</option>
-                            </select>
-                            </div>
-                            <div class="col-md-2">
-                            <select class="form-control" name="b-year" id="">
-                                <option selected>2005</option>
-                            </select>
+                            <label for="date-birth" class="col-md-4 col-form-label text-md-right">{{ __('Дата рождения:') }}</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" type="date" id="birth_date" name="birth_date" value="{{ old('birth_date') }}">
+                            @if ($errors->has('birth_date'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('birth_date')}}</strong>
+                                </span>
+                            @endif
                             </div>
                         </div>
 
@@ -105,15 +95,15 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Пол:') }}</label>
 
                             <div class="col-md-6">
-                                <select name="gender" class="form-control" id="gender">
-                                    <option selected value="null">Укажите ваш пол</option>
-                                    <option value="Man">М</option>
-                                    <option value="Girl">Ж</option>
+                                <select name="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" id="gender">
+                                    <option>...</option>
+                                    <option value="girl">женщина</option>
+                                    <option value="man">мужчина</option>
                                 </select>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('gender'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
                                 @endif
                             </div>
